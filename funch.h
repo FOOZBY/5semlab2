@@ -1,10 +1,11 @@
 ﻿#include <iostream>
+#include <chrono>
 
 using namespace std;
 
 int snail_amount;
-
-void merge(float* arr, int l, int m, int r)
+double avg_time = 0;
+void merge(float* arr, int l, int m, int r)//O(n)
 {
 	int i = 0, j = 0, k = l;
 	int n1 = m - l + 1;
@@ -49,7 +50,7 @@ void merge(float* arr, int l, int m, int r)
 	delete[] R;
 }
 
-void mergeSort(float* arr, int l, int r)
+void mergeSort(float* arr, int l, int r)//O(nlog(n))
 {
 	
 	int m = l + (r - l) / 2;
@@ -58,7 +59,7 @@ void mergeSort(float* arr, int l, int r)
 		mergeSort(arr, l, m);
 		mergeSort(arr, m + 1, r);
 
-		merge(arr, l, m, r);
+		merge(arr, l, m, r);//O(n)
 	}
 }
 
@@ -71,15 +72,20 @@ struct Snail
 
 	bool confusion = false;
 	float temp;
-	void conf_detecter()
+	void conf_detecter()//O(n*log(n))
 	{
+		auto start = chrono::high_resolution_clock::now();
 		mergeSort(paths, 0, length-1);
+		auto end = chrono::high_resolution_clock::now();
+		chrono::duration<double,milli> duration = end - start;
+		avg_time += duration.count();
 		if (paths[0] == paths[1])
 			this->confusion = true;
 	}
 };
 
-float pathlength(float x1, float y1, float x2, float y2)
+float pathlength(float x1, float y1, float x2, float y2)//O(1)
+
 {
 	return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
 }

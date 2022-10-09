@@ -7,7 +7,7 @@ int main()
 	cout << "Введите кол-во улиток: ";
 	cin >> snail_amount;
 	Snail* snails = new Snail[snail_amount];
-	cout << "Для каждой улитки введите стартовую позицию(считать верхний левый угол за 0,0)" << endl;
+	cout << "Для каждой улитки введите стартовую позицию в см(считать верхний левый угол за 0,0)" << endl;
 	for (int i = 0; i < snail_amount; i++)
 	{
 		cout <<"улитка "<< i << ":\nX: ";
@@ -19,7 +19,6 @@ int main()
 	float shortest_path = 141422;//самое большое расстояние,которое может быть
 	float temp = 0;
 	int l = 0;
-
 	for (int i = 0; i < snail_amount; i++)
 	{
 		for (int j = 0; j < snail_amount; j++)
@@ -45,9 +44,9 @@ int main()
 			k++;
 		}
 	}
+	cout << "среднее время сортировки = " << avg_time / snail_amount << " millisec." << endl;
 	if (k != snail_amount)
-		cout << "кратчайшее время = " << shortest_path << endl << endl;
-	
+		cout << "кратчайшее время = " << shortest_path/2 << " sec." << endl << endl;
 	system("pause");
 	return 0;
 }
