@@ -6,6 +6,12 @@ int main()
 
 	cout << "Введите кол-во улиток: ";
 	cin >> snail_amount;
+	if (snail_amount == 1)
+	{
+		cout << "Улитка в замешательстве(и ей одиноко)" << endl;
+		system("pause");
+		return 0;
+	}
 	Snail* snails = new Snail[snail_amount];
 	cout << "Для каждой улитки введите стартовую позицию в см(считать верхний левый угол за 0,0)" << endl;
 	for (int i = 0; i < snail_amount; i++)
