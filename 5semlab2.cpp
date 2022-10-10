@@ -50,9 +50,8 @@ int main()
 			k++;
 		}
 	}
-	cout << "среднее время сортировки = " << avg_time / snail_amount << " millisec." << endl;
 	if (k != snail_amount)
-		cout << "кратчайшее время = " << shortest_path/2 << " sec." << endl << endl;
+		cout << "Ближайшие улитки достигнут друг друга через " << shortest_path/2 << " сек." << endl << endl;
 	system("pause");
 	return 0;
 }

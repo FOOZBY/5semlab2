@@ -4,7 +4,7 @@
 using namespace std;
 
 int snail_amount;
-double avg_time = 0;
+
 void merge(float* arr, int l, int m, int r)//O(n)
 {
 	int i = 0, j = 0, k = l;
@@ -71,14 +71,9 @@ struct Snail
 	float* paths = new float[length]();
 
 	bool confusion = false;
-	float temp;
 	void conf_detecter()//O(n*log(n))
 	{
-		auto start = chrono::high_resolution_clock::now();
 		mergeSort(paths, 0, length-1);
-		auto end = chrono::high_resolution_clock::now();
-		chrono::duration<double,milli> duration = end - start;
-		avg_time += duration.count();
 		if (paths[0] == paths[1])
 			this->confusion = true;
 	}
